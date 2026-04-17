@@ -24,6 +24,16 @@ async def main():
                     "--ignore-robots-txt"
                 ]
                             
+            },
+            
+            "filesystem": {
+            "transport": "stdio", # stdio
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-filesystem",
+                "/home/inta/Documentos"
+            ]
             }
         }
     )
@@ -42,7 +52,7 @@ async def main():
         print("No existen recursos en este MCP")
 
     agente = create_agent(
-        model=ChatOllama(model="gemma4:26b", reasoning=True, num_ctx=100000), # Usad alguno vuestro
+        model=ChatOllama(model="gemma4:26b", reasoning=True, num_ctx=100000),
         tools=tools,
         system_prompt="Eres un asistente que llama a herramientas. " \
         "Devuelve la salida en español si la tool devuelve la información en inglés."
